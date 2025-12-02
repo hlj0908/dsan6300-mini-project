@@ -1,0 +1,128 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Overview",
+    "section": "",
+    "text": "This project is mainly divided into the following sections (click to jump to each section).\n\nOverview\n\nAirline Performance\n\nAirport & Cancellations\n\nTemporal Trends"
+  },
+  {
+    "objectID": "Airline_Performance.html",
+    "href": "Airline_Performance.html",
+    "title": "Airline Performance",
+    "section": "",
+    "text": "An airline’s operational performance reflects its scheduling capabilities and operational stability within the complex and highly dynamic air transport system. Flight delays are typically caused by factors such as weather, air traffic control, mechanical problems, or cascading effects from preceding flights; simultaneously, airlines employ proactive strategies, such as early departures, to restore flight schedules and maintain network stability. This section will compare the maximum departure delays and maximum early departures of various airlines during July 2023 to demonstrate the differences in their performance under pressure and in implementing scheduling recovery, thereby revealing their operational resilience and scheduling flexibility."
+  },
+  {
+    "objectID": "index.html#dataset-description",
+    "href": "index.html#dataset-description",
+    "title": "Overview",
+    "section": "Dataset Description",
+    "text": "Dataset Description\nThis project uses the On-Time Performance flight punctuality dataset provided by the U.S. Department of Transportation (DOT), selecting flight records from July 2023 as the analysis sample. This dataset is collected and released daily by the Bureau of Transportation Statistics (BTS) and contains detailed flight operation information, such as:\n\nAirline\nOrigin/Destination Airports\nPlanned and Actual Departure/Arrival Times\nDeparture/Arrival Delay Minutes\nCancellation Codes\nFlight Status (On-time, Delayed, Cancelled, Diverted)\nDimensional Tables for Airlines, Airports, and Day of the Week\n\nIn the On-Time Performance dataset, the fact table typically consists of numerical metrics (such as delay minutes, distance, and time) and is linked to dimension tables via foreign keys. The dimension tables store descriptive information (such as airline name, airport name, day of the week, and cancellation reason). Official glossaries for all fields in the dataset can be found on the U.S. Bureau of Transportation Statistics website: https://www.transtats.bts.gov/Glossary.asp"
+  },
+  {
+    "objectID": "index.html#research-question",
+    "href": "index.html#research-question",
+    "title": "Overview",
+    "section": "Research Question",
+    "text": "Research Question\nThis project investigates U.S. domestic flight performance in July 2023 through seven focused analytical questions. Each question targets a specific operational aspect of the air transportation system, allowing us to build a complete understanding of airline reliability, airport efficiency, cancellation patterns, and temporal traffic behavior.\n\nWhich airlines experience the largest departure delays?\n\nWhich airlines have the earliest departures (largest negative delays)?\n\nWhich days of the week have the highest number of flights?\n\nWhich airport has the highest average departure delay?\n\nFor each airline, which airport has the worst delay performance?\n\nAre there canceled flights, and what are the most common cancellation reasons at each airport?\n\nWhat is the 3-day moving average trend of daily flight activity?"
+  },
+  {
+    "objectID": "index.html#key-insights",
+    "href": "index.html#key-insights",
+    "title": "Overview",
+    "section": "Key Insights",
+    "text": "Key Insights"
+  },
+  {
+    "objectID": "index.html#executive-summary",
+    "href": "index.html#executive-summary",
+    "title": "Overview",
+    "section": "Executive Summary",
+    "text": "Executive Summary\nThis project, based on the July 2023 On-Time Performance flight punctuality dataset provided by the U.S. Bureau of Transportation Statistics (BTS), and combining multiple dimensions such as airlines, airports, days of the week, and reasons for cancellations, systematically studied the operational status of domestic flights in the United States using SQL-driven data analysis methods.\nThe analysis revolves around seven core questions, constructing a multi-faceted, data-driven panoramic view of flight operations, from airline delay performance, airport operational efficiency, reasons for flight cancellations to flight volume time trends. Overall, the data reveals significant differences in the air transport system across different times, locations, and operating entities:\nThere are significant differences in delay performance among airlines. Some airlines have smaller maximum delays, demonstrating stable operational capabilities, while others experience extreme delays, reflecting higher risks in complex operating environments. Furthermore, through systematic analysis of these issues, this project not only reveals the patterns behind flight operation data but also provides crucial insights into understanding airline scheduling strategies, airport operational bottlenecks, and reasons for flight cancellations. These results have practical significance for air operations planning, passenger behavior analysis, and air system performance evaluation."
+  },
+  {
+    "objectID": "index.html#site-navigation",
+    "href": "index.html#site-navigation",
+    "title": "Overview",
+    "section": "",
+    "text": "This project is mainly divided into the following sections (click to jump to each section).\n\nOverview\n\nAirline Performance\n\nAirport & Cancellations\n\nTemporal Trends"
+  },
+  {
+    "objectID": "Airline_Performance.html#the-most-extreme-delay-events",
+    "href": "Airline_Performance.html#the-most-extreme-delay-events",
+    "title": "Airline Performance",
+    "section": "The most extreme delay events",
+    "text": "The most extreme delay events\nMaximum takeoff delay depicts the most severe delay event encountered by an airline throughout the sample period. While these extreme delays do not represent their daily averages, they clearly reflect an airline’s performance in the face of severe operational disruptions.\nThe graph shows that most airlines’ maximum delays are concentrated between 1,200 and 1,700 minutes, indicating that they experience significant delays under systemic stress (such as severe weather, aircraft scheduling issues, or major mechanical problems), but the extent is relatively manageable.\nSouthwest Airlines (WN) had the lowest maximum delay, demonstrating high operational stability. This indicates that the airline still possesses strong scheduling capabilities and minimal delay propagation under systemic pressure. American Airlines (AA) experienced extreme delays exceeding 3,000 minutes, far exceeding other airlines. This indirectly illustrates that some airports have complex route networks, where a single point of failure can easily trigger a chain reaction.\n\n\n\n\n\n\n\n\n\nAirlines may encounter major weather events, crew scheduling disruptions, or airport operational restrictions during the month, or the corresponding flights may involve accumulated delays across regions. By using maximum delay data, we can identify each airline’s resilience under worst-case scenarios and further infer the vulnerabilities in its network structure."
+  },
+  {
+    "objectID": "Airline_Performance.html#the-most-extreme-early-departures",
+    "href": "Airline_Performance.html#the-most-extreme-early-departures",
+    "title": "Airline Performance",
+    "section": "The most extreme early departures",
+    "text": "The most extreme early departures\nBeyond delays, early departures (negative delays) reveal another side of airlines. To restore flight schedules, they proactively depart earlier to reduce the cascading effects of subsequent delays.\nThe chart shows the maximum number of minutes of early departure for each airline. SkyWest Airlines (OO) and PSA Airlines (OH) have the largest early departures, exceeding 40 minutes, indicating that these airlines are more proactive in scheduling recovery, utilizing window time to depart as early as possible and avoid cascading delays. Allegiant Air (G4) and Alaska Airlines (AS) also have significant early departures, demonstrating their flexible scheduling capabilities within specific route networks. United Airlines (UA) and Hawaiian Airlines (HA) have smaller early departures, reflecting potentially more conservative scheduling strategies or constraints imposed by airport operations; for example, large hub airports often have limited slots, making early departures more restrictive. Early departures are not necessarily “more punctual,” but rather part of a scheduling strategy. Therefore, the magnitude of early departures actually reflects an airline’s operational agility.\n\n\n\n\n\n\n\n\n\nThis section comprehensively demonstrates airlines’ capabilities in the face of operational fluctuations， including their ability to withstand difficulties and their ability to recover from disruptions through two dimensions: maximum delay and maximum early departure. Combining these two aspects helps us understand why some airlines seem more reliable and have better time management, while others are more prone to cascading delays. This analysis lays the foundation for subsequent research on airport delays and temporary trends."
+  },
+  {
+    "objectID": "Performance_Cancellations.html#airports-with-the-most-severe-delays-for-each-airline",
+    "href": "Performance_Cancellations.html#airports-with-the-most-severe-delays-for-each-airline",
+    "title": "Airport Performance & Cancellations",
+    "section": "Airports with the most severe delays for each airline",
+    "text": "Airports with the most severe delays for each airline"
+  },
+  {
+    "objectID": "Performance_Cancellations.html#analysis-of-flight-cancellations-and-reasons-for-cancellations",
+    "href": "Performance_Cancellations.html#analysis-of-flight-cancellations-and-reasons-for-cancellations",
+    "title": "Airport Performance & Cancellations",
+    "section": "Analysis of flight cancellations and reasons for cancellations",
+    "text": "Analysis of flight cancellations and reasons for cancellations"
+  },
+  {
+    "objectID": "Performance_Cancellations.html#the-most-severe-delays-for-each-airline",
+    "href": "Performance_Cancellations.html#the-most-severe-delays-for-each-airline",
+    "title": "Airport Performance & Cancellations",
+    "section": "The most severe delays for each airline",
+    "text": "The most severe delays for each airline\nBy calculating the average departure delay (DepDelay) for each airline at different airports and identifying the airports with the most severe delays for each airline, we can pinpoint the “high-risk airports” for each airline. The table results show significant differences in the airports with the most severe delays for each airline:\n\nAmerican Airlines (AA) experienced the highest average delay at Rapid City Regional Airport (RAP), reaching 287 minutes, making it the worst case among all airlines. The rapidly accumulating delays indicate that this airport is significantly affected by weather, resource capacity, or disruptions to connecting flights.\nAllegiant Air (G4) experienced severe delays at El Paso International Airport (ELP), with an average delay of 239 minutes, indicating that its point-to-point network is less resilient at this airport.\nAlaska Airlines (AS) experienced its worst delay at Newark Liberty International Airport, with an average delay of 50.9 minutes. As one of the busiest airports in the United States, congestion and weather factors at EWR likely have a significant impact on AS’s operations.\nDelta Air Lines (DL) experienced its worst delay at Charlottesville Albemarle Airport at 74.5 minutes, likely related to regional weather and flight connections.\nEndeavor Air (9E) experienced its highest average delay of 71.2 minutes at Fayetteville Regional Airport, reflecting the operational sensitivity of regional airlines at smaller airports.\n\nOverall, the operational risks faced by different airlines at different airports vary. Delays for large airlines tend to be concentrated at hubs or high-traffic airports; while regional airlines (such as 9E) are more susceptible to weather and resource constraints."
+  },
+  {
+    "objectID": "Performance_Cancellations.html#flight-cancellations-and-reasons-for-cancellations",
+    "href": "Performance_Cancellations.html#flight-cancellations-and-reasons-for-cancellations",
+    "title": "Airport Performance & Cancellations",
+    "section": "Flight cancellations and reasons for cancellations",
+    "text": "Flight cancellations and reasons for cancellations\nAfter compiling statistics on all canceled flights, 14,606 flights were canceled in July 2023. Further analysis revealed the most common reasons for flight cancellations. As shown in the chart below, cancellations primarily fall into three categories: Weather, Carrier, and National Air System (NAS). The visualization results show that\n\nWeather accounted for the highest percentage (63.1%), indicating that July (the peak thunderstorm season in the US) was the leading cause of widespread flight cancellations. Smaller airports were particularly vulnerable to complete shutdowns due to thunderstorms, low visibility, or wind shear.\nCarrier accounted for 26.7%, including mechanical failures, crew overtime, and operational malfunctions. These cancellations are typically related to airline internal scheduling efficiency and fleet status.\nNational Air System (NAS) accounted for 10.2%. When air traffic control capacity is limited, thunderstorms occur, or flow control (GDP/AFP) is activated, flights may be canceled directly rather than delayed.\n\nThe distribution of cancellation reasons reflects that weather is an uncontrollable systemic factor, with a particularly significant impact on regional airports, and is the primary source of risk for summer operations. Airline-related factors still account for a significant proportion, indicating that aircraft maintenance, crew allocation, and flight turnaround efficiency remain the areas with the greatest potential for improvement. Air traffic control system cancellations account for the lowest proportion, but their impact has a chain reaction, often leading to widespread flight adjustments once triggered."
+  },
+  {
+    "objectID": "Performance_Cancellations.html",
+    "href": "Performance_Cancellations.html",
+    "title": "Airport Performance & Cancellations",
+    "section": "",
+    "text": "Airport operational efficiency has a critical impact on flight punctuality. This section presents the overall airport performance in July 2023 from three perspectives. First, we identify the airports with the highest average departure delays, reflecting the most significant operational bottlenecks in the system. Second, we analyze the airports with the most severe delays for each airline, showing the most stressed nodes in each airline’s network. Finally, we examine flight cancellations and their main causes to understand the impact of weather, air traffic control, or airline operational issues on flight schedules. Through this comprehensive analysis of these three parts, we can clearly understand the sources of delays, airline weaknesses at certain airports, and the structural reasons for flight cancellations from the airport’s perspective."
+  },
+  {
+    "objectID": "Performance_Cancellations.html#the-highest-average-departure-delays",
+    "href": "Performance_Cancellations.html#the-highest-average-departure-delays",
+    "title": "Airport Performance & Cancellations",
+    "section": "The highest average departure delays",
+    "text": "The highest average departure delays\nAfter ranking the average departure delays of all departure airports, Coastal Carolina Regional Airport (EWN) in North Carolina topped the list in July 2023 with an average departure delay of 89.4 minutes. As a regional airport, EWN has a low flight volume, making it highly sensitive to individual abnormal delays. Even a small number of flights experiencing significant delays can significantly inflate the overall average. Furthermore, July is peak thunderstorm season in the southeastern United States, and small airports often lack sufficient runway and ground resources to quickly restore operations during inclement weather. If preceding flights originate from severely delayed hub airports, it further amplifies EWN’s delays. Therefore, despite its relatively small size, EWN’s operating environment resulted in a significantly higher average delay during the sample period, making it a key point in the systemic delays of that month.\n╔══════════════════════════════════════╗\n║  🛫 Highest Avg Departure Delay      ║\n║  Airport: EWN (Coastal Carolina)     ║\n║  Average Delay: 89.4 minutes         ║\n╚══════════════════════════════════════╝"
+  },
+  {
+    "objectID": "Temporal_Trends.html",
+    "href": "Temporal_Trends.html",
+    "title": "Temporal Trends",
+    "section": "",
+    "text": "The weekly flight volume rankings reveal a clear cyclical pattern in air transport across different workdays. Monday is the busiest day, with nearly 100,000 flights, followed by Sunday and Saturday, indicating continued high travel demand over the weekend. Flight volume gradually decreases as the workweek progresses: Thursday and Friday are at intermediate levels, while Wednesday and Tuesday are the least busy days of the week. This pattern reflects a typical “peak at the beginning of the week – trough in the middle of the week – rebound at the weekend” travel structure.\n\n\n\n\n\n\n\n\n\nweekday_name\nnum_flights\nrank_order\n\n\n\n\n0\nMonday\n99253\n1\n\n\n1\nSunday\n97766\n2\n\n\n2\nSaturday\n90575\n3\n\n\n3\nThursday\n80967\n4\n\n\n4\nFriday\n80923\n5\n\n\n5\nWednesday\n78132\n6\n\n\n6\nTuesday\n74250\n7\n\n\n\n\n\n\n\n\n\n\nTo smooth out fluctuations in daily flight volume, a 3-day rolling average was calculated. The results show a clear cyclical pattern throughout July 2023. Flight volume was relatively low at the beginning of the month, with a rolling average of approximately 17,500–18,000 flights; as the month progressed, flight volume rose rapidly around July 8–12, with the 3-day rolling average approaching 19,500 flights for the first time.\nEntering mid-July, flight volume generally remained within the range of 19,500–20,000 flights, with several peaks (such as around July 15th, 22nd, and 29th), reflecting a regular weekly increase in flights. This cyclical fluctuation may be related to passenger travel behavior, weekend travel demand, and airline scheduling patterns.\nOverall, the 3-day moving average curve smoothly illustrates the trend of flight supply throughout the month: gradually climbing from a low level at the beginning of the month and maintaining a high level in the middle and end of the month, exhibiting a stable and typically seasonal air transport rhythm."
+  },
+  {
+    "objectID": "Temporal_Trends.html#weekly-flight-volume-and-moving-averages",
+    "href": "Temporal_Trends.html#weekly-flight-volume-and-moving-averages",
+    "title": "Temporal Trends",
+    "section": "",
+    "text": "The weekly flight volume rankings reveal a clear cyclical pattern in air transport across different workdays. Monday is the busiest day, with nearly 100,000 flights, followed by Sunday and Saturday, indicating continued high travel demand over the weekend. Flight volume gradually decreases as the workweek progresses: Thursday and Friday are at intermediate levels, while Wednesday and Tuesday are the least busy days of the week. This pattern reflects a typical “peak at the beginning of the week – trough in the middle of the week – rebound at the weekend” travel structure.\n\n\n\n\n\n\n\n\n\nweekday_name\nnum_flights\nrank_order\n\n\n\n\n0\nMonday\n99253\n1\n\n\n1\nSunday\n97766\n2\n\n\n2\nSaturday\n90575\n3\n\n\n3\nThursday\n80967\n4\n\n\n4\nFriday\n80923\n5\n\n\n5\nWednesday\n78132\n6\n\n\n6\nTuesday\n74250\n7\n\n\n\n\n\n\n\n\n\n\nTo smooth out fluctuations in daily flight volume, a 3-day rolling average was calculated. The results show a clear cyclical pattern throughout July 2023. Flight volume was relatively low at the beginning of the month, with a rolling average of approximately 17,500–18,000 flights; as the month progressed, flight volume rose rapidly around July 8–12, with the 3-day rolling average approaching 19,500 flights for the first time.\nEntering mid-July, flight volume generally remained within the range of 19,500–20,000 flights, with several peaks (such as around July 15th, 22nd, and 29th), reflecting a regular weekly increase in flights. This cyclical fluctuation may be related to passenger travel behavior, weekend travel demand, and airline scheduling patterns.\nOverall, the 3-day moving average curve smoothly illustrates the trend of flight supply throughout the month: gradually climbing from a low level at the beginning of the month and maintaining a high level in the middle and end of the month, exhibiting a stable and typically seasonal air transport rhythm."
+  }
+]

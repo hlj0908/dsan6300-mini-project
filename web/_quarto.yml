@@ -1,0 +1,35 @@
+project:
+  type: website
+
+website:
+  title: "Airline Performance Analytics"
+  description: "A clean and modern website for exploring airline performance trends."
+  navbar:
+    background: primary
+    search: true
+    left:
+      - href: index.qmd
+        text: "Home"
+      - href: Airline_Performance.qmd
+        text: "Airline Performance"
+      - href: Performance_Cancellations.qmd
+        text: "Cancellations Analysis"
+      - href: Temporal_Trends.qmd
+        text: "Temporal Trends"
+
+format:
+  html:
+    theme:
+      light: cosmo
+      dark: superhero
+    css: styles.css
+    toc: true
+    toc-location: left
+    page-layout: full
+    smooth-scroll: true
+    highlight-style: atom-one
+
+
+
+
+

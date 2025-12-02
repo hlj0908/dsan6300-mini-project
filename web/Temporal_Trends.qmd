@@ -1,0 +1,52 @@
+---
+title: "Temporal Trends"
+jupyter: python3
+---
+
+## Weekly Flight Volume and Moving Averages
+
+### Flight Volume by Day of the Week
+
+The weekly flight volume rankings reveal a clear cyclical pattern in air transport across different workdays. Monday is the busiest day, with nearly 100,000 flights, followed by Sunday and Saturday, indicating continued high travel demand over the weekend. Flight volume gradually decreases as the workweek progresses: Thursday and Friday are at intermediate levels, while Wednesday and Tuesday are the least busy days of the week. This pattern reflects a typical "peak at the beginning of the week – trough in the middle of the week – rebound at the weekend" travel structure.
+
+```{python}
+#| echo: false
+import pandas as pd
+
+df = pd.DataFrame({
+"weekday_name": ["Monday","Sunday","Saturday","Thursday","Friday","Wednesday","Tuesday"],
+"num_flights": [99253,97766,90575,80967,80923,78132,74250],
+"rank_order": [1,2,3,4,5,6,7]
+})
+
+df
+```
+
+### 3-Day Rolling Average of Flights
+
+To smooth out fluctuations in daily flight volume, a 3-day rolling average was calculated. The results show a clear cyclical pattern throughout July 2023. Flight volume was relatively low at the beginning of the month, with a rolling average of approximately 17,500–18,000 flights; as the month progressed, flight volume rose rapidly around July 8–12, with the 3-day rolling average approaching 19,500 flights for the first time.
+
+Entering mid-July, flight volume generally remained within the range of 19,500–20,000 flights, with several peaks (such as around July 15th, 22nd, and 29th), reflecting a regular weekly increase in flights. This cyclical fluctuation may be related to passenger travel behavior, weekend travel demand, and airline scheduling patterns.
+
+Overall, the 3-day moving average curve smoothly illustrates the trend of flight supply throughout the month: gradually climbing from a low level at the beginning of the month and maintaining a high level in the middle and end of the month, exhibiting a stable and typically seasonal air transport rhythm.
+
+
+```{python}
+#| echo: false
+import pandas as pd
+import plotly.express as px
+
+df_q7 = pd.read_csv("./answer/7.csv")
+fig = px.line(
+    df_q7,
+    x="FlightDate",
+    y="avg_last_3_days",
+    title="3-Day Rolling Average of Flights",
+    markers=True
+)
+fig.update_layout(
+    xaxis_title="Date",
+    yaxis_title="3-Day Average Flights",
+)
+fig.show()
+```

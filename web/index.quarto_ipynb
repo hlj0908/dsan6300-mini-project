@@ -1,0 +1,67 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Overview\"\n",
+        "jupyter: python3\n",
+        "---\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "## Site Navigation\n",
+        "This project is mainly divided into the following sections (click to jump to each section).\n",
+        "\n",
+        "1. [Overview](index.qmd)  \n",
+        "2. [Airline Performance](Airline_Performance.qmd)  \n",
+        "3. [Airport & Cancellations](Performance_Cancellations.qmd)  \n",
+        "4. [Temporal Trends](Temporal_Trends.qmd)  \n",
+        "\n",
+        "## Executive Summary\n",
+        "This project, based on the July 2023 On-Time Performance flight punctuality dataset provided by the U.S. Bureau of Transportation Statistics (BTS), and combining multiple dimensions such as airlines, airports, days of the week, and reasons for cancellations, systematically studied the operational status of domestic flights in the United States using SQL-driven data analysis methods.\n",
+        "\n",
+        "The analysis revolves around seven core questions, constructing a multi-faceted, data-driven panoramic view of flight operations, from airline delay performance, airport operational efficiency, reasons for flight cancellations to flight volume time trends. Overall, the data reveals significant differences in the air transport system across different times, locations, and operating entities:\n",
+        "\n",
+        "There are significant differences in delay performance among airlines. Some airlines have smaller maximum delays, demonstrating stable operational capabilities, while others experience extreme delays, reflecting higher risks in complex operating environments. Furthermore, through systematic analysis of these issues, this project not only reveals the patterns behind flight operation data but also provides crucial insights into understanding airline scheduling strategies, airport operational bottlenecks, and reasons for flight cancellations. These results have practical significance for air operations planning, passenger behavior analysis, and air system performance evaluation.\n",
+        "\n",
+        "## Dataset Description\n",
+        "This project uses the On-Time Performance flight punctuality dataset provided by the U.S. Department of Transportation (DOT), selecting flight records from July 2023 as the analysis sample. This dataset is collected and released daily by the Bureau of Transportation Statistics (BTS) and contains detailed flight operation information, such as:\n",
+        "\n",
+        "- Airline\n",
+        "- Origin/Destination Airports\n",
+        "- Planned and Actual Departure/Arrival Times\n",
+        "- Departure/Arrival Delay Minutes\n",
+        "- Cancellation Codes\n",
+        "- Flight Status (On-time, Delayed, Cancelled, Diverted)\n",
+        "- Dimensional Tables for Airlines, Airports, and Day of the Week\n",
+        "\n",
+        "In the On-Time Performance dataset, the fact table typically consists of numerical metrics (such as delay minutes, distance, and time) and is linked to dimension tables via foreign keys. The dimension tables store descriptive information (such as airline name, airport name, day of the week, and cancellation reason). Official glossaries for all fields in the dataset can be found on the U.S. Bureau of Transportation Statistics website: <https://www.transtats.bts.gov/Glossary.asp>\n",
+        "\n",
+        "## Research Question\n",
+        "This project investigates U.S. domestic flight performance in July 2023 through seven focused analytical questions. Each question targets a specific operational aspect of the air transportation system, allowing us to build a complete understanding of airline reliability, airport efficiency, cancellation patterns, and temporal traffic behavior.\n",
+        "\n",
+        "1. Which airlines experience the largest departure delays?  \n",
+        "2. Which airlines have the earliest departures (largest negative delays)?  \n",
+        "3. Which days of the week have the highest number of flights?  \n",
+        "4. Which airport has the highest average departure delay?  \n",
+        "5. For each airline, which airport has the worst delay performance?  \n",
+        "6. Are there canceled flights, and what are the most common cancellation reasons at each airport?  \n",
+        "7. What is the 3-day moving average trend of daily flight activity?\n"
+      ],
+      "id": "ae41528d"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "C:\\Users\\hlj\\anaconda3\\envs\\pytorch\\share\\jupyter\\kernels\\python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

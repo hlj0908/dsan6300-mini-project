@@ -1,0 +1,104 @@
+---
+title: "Airport Performance & Cancellations"
+jupyter: python3
+---
+
+Airport operational efficiency has a critical impact on flight punctuality. This section presents the overall airport performance in July 2023 from three perspectives. First, we identify the airports with the highest average departure delays, reflecting the most significant operational bottlenecks in the system. Second, we analyze the airports with the most severe delays for each airline, showing the most stressed nodes in each airline's network. Finally, we examine flight cancellations and their main causes to understand the impact of weather, air traffic control, or airline operational issues on flight schedules. Through this comprehensive analysis of these three parts, we can clearly understand the sources of delays, airline weaknesses at certain airports, and the structural reasons for flight cancellations from the airport's perspective.
+
+## The highest average departure delays
+After ranking the average departure delays of all departure airports, **Coastal Carolina Regional Airport (EWN) in North Carolina** topped the list in July 2023 with an average departure delay of 89.4 minutes. As a regional airport, EWN has a low flight volume, making it highly sensitive to individual abnormal delays. Even a small number of flights experiencing significant delays can significantly inflate the overall average. Furthermore, July is peak thunderstorm season in the southeastern United States, and small airports often lack sufficient runway and ground resources to quickly restore operations during inclement weather. If preceding flights originate from severely delayed hub airports, it further amplifies EWN's delays. Therefore, despite its relatively small size, EWN's operating environment resulted in a significantly higher average delay during the sample period, making it a key point in the systemic delays of that month.
+
+```text
+╔══════════════════════════════════════╗
+║  🛫 Highest Avg Departure Delay      ║
+║  Airport: EWN (Coastal Carolina)     ║
+║  Average Delay: 89.4 minutes         ║
+╚══════════════════════════════════════╝
+```
+
+
+
+## The most severe delays for each airline
+By calculating the average departure delay (DepDelay) for each airline at different airports and identifying the airports with the most severe delays for each airline, we can pinpoint the "high-risk airports" for each airline. The table results show significant differences in the airports with the most severe delays for each airline:
+
+- American Airlines (AA) experienced the highest average delay at Rapid City Regional Airport (RAP), reaching 287 minutes, making it the worst case among all airlines. The rapidly accumulating delays indicate that this airport is significantly affected by weather, resource capacity, or disruptions to connecting flights.
+- Allegiant Air (G4) experienced severe delays at El Paso International Airport (ELP), with an average delay of 239 minutes, indicating that its point-to-point network is less resilient at this airport.
+- Alaska Airlines (AS) experienced its worst delay at Newark Liberty International Airport, with an average delay of 50.9 minutes. As one of the busiest airports in the United States, congestion and weather factors at EWR likely have a significant impact on AS's operations.
+- Delta Air Lines (DL) experienced its worst delay at Charlottesville Albemarle Airport at 74.5 minutes, likely related to regional weather and flight connections.
+- Endeavor Air (9E) experienced its highest average delay of 71.2 minutes at Fayetteville Regional Airport, reflecting the operational sensitivity of regional airlines at smaller airports.
+
+Overall, the operational risks faced by different airlines at different airports vary. Delays for large airlines tend to be concentrated at hubs or high-traffic airports; while regional airlines (such as 9E) are more susceptible to weather and resource constraints.
+
+```{python}
+#| echo: false
+import pandas as pd
+import plotly.graph_objects as go
+
+df = pd.read_csv("./answer/5.csv") 
+
+airlines = list(df['airline_name'].unique())
+airports = list(df['airport_name'].unique())
+
+nodes = airlines + airports
+
+
+node_indices = {name: i for i, name in enumerate(nodes)}
+
+source = [node_indices[a] for a in df['airline_name']]
+target = [node_indices[b] for b in df['airport_name']]
+value  = df['max_avg_dep_delay']
+
+fig = go.Figure(data=[go.Sankey(
+    node=dict(
+        pad=20,
+        thickness=15,
+        line=dict(color="black", width=0.5),
+        label=nodes
+    ),
+    link=dict(
+        source=source,
+        target=target,
+        value=value
+    )
+)])
+
+fig.update_layout(
+    title_text="Airline → Airport: Most Severe Delay",
+    font_size=12
+)
+
+fig.show()
+```
+
+## Flight cancellations and reasons for cancellations
+After compiling statistics on all canceled flights, 14,606 flights were canceled in July 2023. Further analysis revealed the most common reasons for flight cancellations. As shown in the chart below, cancellations primarily fall into three categories: Weather, Carrier, and National Air System (NAS). The visualization results show that
+
+- Weather accounted for the highest percentage (63.1%), indicating that July (the peak thunderstorm season in the US) was the leading cause of widespread flight cancellations. Smaller airports were particularly vulnerable to complete shutdowns due to thunderstorms, low visibility, or wind shear.
+- Carrier accounted for 26.7%, including mechanical failures, crew overtime, and operational malfunctions. These cancellations are typically related to airline internal scheduling efficiency and fleet status.
+- National Air System (NAS) accounted for 10.2%. When air traffic control capacity is limited, thunderstorms occur, or flow control (GDP/AFP) is activated, flights may be canceled directly rather than delayed.
+
+The distribution of cancellation reasons reflects that weather is an uncontrollable systemic factor, with a particularly significant impact on regional airports, and is the primary source of risk for summer operations. Airline-related factors still account for a significant proportion, indicating that aircraft maintenance, crew allocation, and flight turnaround efficiency remain the areas with the greatest potential for improvement. Air traffic control system cancellations account for the lowest proportion, but their impact has a chain reaction, often leading to widespread flight adjustments once triggered.
+
+```{python}
+#| echo: false
+import pandas as pd
+import plotly.express as px
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("./answer/6b.csv")
+
+reason_counts = df['cancel_reason'].value_counts()
+
+plt.figure(figsize=(6, 6))
+plt.pie(
+    reason_counts,
+    labels=reason_counts.index,
+    autopct='%1.1f%%',
+    startangle=90,
+    wedgeprops={'width':0.5}  # 环形图
+)
+plt.title("Cancellation Reasons Distribution")
+plt.show()
+
+```

@@ -1,0 +1,75 @@
+---
+title: "Airline Performance"
+jupyter: python3
+---
+
+An airline's operational performance reflects its scheduling capabilities and operational stability within the complex and highly dynamic air transport system. Flight delays are typically caused by factors such as weather, air traffic control, mechanical problems, or cascading effects from preceding flights; simultaneously, airlines employ proactive strategies, such as early departures, to restore flight schedules and maintain network stability. This section will compare the maximum departure delays and maximum early departures of various airlines during July 2023 to demonstrate the differences in their performance under pressure and in implementing scheduling recovery, thereby revealing their operational resilience and scheduling flexibility.
+
+## The most extreme delay events
+Maximum takeoff delay depicts the most severe delay event encountered by an airline throughout the sample period. While these extreme delays do not represent their daily averages, they clearly reflect an airline's performance in the face of severe operational disruptions.
+
+The graph shows that most airlines' maximum delays are concentrated between 1,200 and 1,700 minutes, indicating that they experience significant delays under systemic stress (such as severe weather, aircraft scheduling issues, or major mechanical problems), but the extent is relatively manageable.
+
+Southwest Airlines (WN) had the lowest maximum delay, demonstrating high operational stability. This indicates that the airline still possesses strong scheduling capabilities and minimal delay propagation under systemic pressure. American Airlines (AA) experienced extreme delays exceeding 3,000 minutes, far exceeding other airlines. This indirectly illustrates that some airports have complex route networks, where a single point of failure can easily trigger a chain reaction.
+
+```{python}
+#| echo: false
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Read the Q1 result file
+df = pd.read_csv('./answer/1.csv')
+df = df.sort_values(by='max_dep_delay_minutes', ascending=True)
+
+# Plot
+plt.figure(figsize=(12, 6))
+sns.barplot(
+    data=df,
+    x='airline_name',
+    y='max_dep_delay_minutes',
+    palette='Blues_r'
+)
+plt.xticks(rotation=75, ha='right')
+plt.xlabel("Airline")
+plt.ylabel("Maximum Departure Delay (minutes)")
+plt.title("Maximum Departure Delay by Airline (Ascending Order)")
+plt.tight_layout()
+plt.show()
+```
+
+Airlines may encounter major weather events, crew scheduling disruptions, or airport operational restrictions during the month, or the corresponding flights may involve accumulated delays across regions. By using maximum delay data, we can identify each airline's resilience under worst-case scenarios and further infer the vulnerabilities in its network structure.
+
+## The most extreme early departures
+Beyond delays, early departures (negative delays) reveal another side of airlines. To restore flight schedules, they proactively depart earlier to reduce the cascading effects of subsequent delays.
+
+The chart shows the maximum number of minutes of early departure for each airline. SkyWest Airlines (OO) and PSA Airlines (OH) have the largest early departures, exceeding 40 minutes, indicating that these airlines are more proactive in scheduling recovery, utilizing window time to depart as early as possible and avoid cascading delays. Allegiant Air (G4) and Alaska Airlines (AS) also have significant early departures, demonstrating their flexible scheduling capabilities within specific route networks. United Airlines (UA) and Hawaiian Airlines (HA) have smaller early departures, reflecting potentially more conservative scheduling strategies or constraints imposed by airport operations; for example, large hub airports often have limited slots, making early departures more restrictive. Early departures are not necessarily "more punctual," but rather part of a scheduling strategy. Therefore, the magnitude of early departures actually reflects an airline's operational agility.
+
+
+```{python}
+#| echo: false
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Read the Q2 result file
+df = pd.read_csv('./answer/2.csv')
+df = df.sort_values(by='max_early_departure_minutes', ascending=False)
+
+# Plot
+plt.figure(figsize=(10, 6))
+sns.barplot(
+    data=df,
+    y='airline_name',
+    x='max_early_departure_minutes',
+    palette='Greens_r'
+)
+
+plt.xlabel("Maximum Early Departure (minutes)")
+plt.ylabel("Airline")
+plt.title("Maximum Early Departure by Airline (Descending)")
+plt.tight_layout()
+plt.show()
+```
+
+This section comprehensively demonstrates airlines' capabilities in the face of operational fluctuations， including their ability to withstand difficulties and their ability to recover from disruptions through two dimensions: maximum delay and maximum early departure. Combining these two aspects helps us understand why some airlines seem more reliable and have better time management, while others are more prone to cascading delays. This analysis lays the foundation for subsequent research on airport delays and temporary trends.

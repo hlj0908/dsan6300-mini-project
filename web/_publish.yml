@@ -1,0 +1,5 @@
+- source: _site
+  provider: sftp
+  server: gtown03.reclaimhosting.com
+  username: linjinhe.georgetown.domains
+  destination: /home/linjinhe/public_html/
